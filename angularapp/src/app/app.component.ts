@@ -1,3 +1,4 @@
+
 import { Component ,OnInit} from '@angular/core';
 import { AppModule } from './app.module';
 
@@ -8,9 +9,9 @@ import { AppModule } from './app.module';
 })
 export class AppComponent implements OnInit{
   ngOnInit(): void {
-    for(let i=0;i<this.total.length;i++)
+    for(const element of this.total)
     {
-      this.totalCal += (this.total[i].count * this.total[i].calory)
+      this.totalCal += (element.count * element.calory)
     }
   }
   title = 'calorietracker';
@@ -38,11 +39,11 @@ export class AppComponent implements OnInit{
   {
     if(count !='')
     {
-      for(const element of this.total)
+      for(let i=0;i<this.total.length;i++)
       {
-        if(element.name == (name))
+        if(this.total[i].name == (name))
         {
-          element.count += parseInt(count)
+          this.total[i].count += parseInt(count)
           console.log(this.total)
           this.sum(calory,count)
           return
@@ -61,3 +62,4 @@ export class AppComponent implements OnInit{
     console.log(this.totalCal)
   }
 }
+
